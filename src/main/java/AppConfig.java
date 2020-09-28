@@ -12,6 +12,7 @@ public class AppConfig {
     public SpeakerService getSpeakerService(){
         SpeakerServiceImpl service = new SpeakerServiceImpl(getSpeakerRepository());
 //        service.setRepository(getSpeakerRepository());
+//
         return service;
     }
 
