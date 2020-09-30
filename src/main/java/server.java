@@ -11,22 +11,24 @@ public class javaServer {
     public static void connectToServer() {
         try(ServerSocket serverSocket = new ServerSocket(9991)) {
             Socket connectionSocket = serverSocket.accept();
-
+            
+            System.out.println("connection successful");
+            
             InputStream inputToServer = connectionSocket.getInputStream();
             OutputStream outputFromServer = connectionSocket.getOutputStream();
 
             Scanner scanner = new Scanner(inputToServer, "UTF-8");
             PrintWriter serverPrintOut = new PrintWriter(new OutputStreamWriter(outputFromServer, "UTF-8"), true);
 
-            serverPrintOut.println("Hello World! Enter Peace to exit.");
-            boolean done = false;
+            serverPrintOut.println("Hello!");
+            boolean flag = false;
 
-            while(!done && scanner.hasNextLine()) {
+            while(!flag && scanner.hasNextLine()) {
                 String line = scanner.nextLine();
                 serverPrintOut.println("Echo from <Your Name Here> Server: " + line);
 
                 if(line.toLowerCase().trim().equals("peace")) {
-                    done = true;
+                    flag = true;
                 }
             }
         } catch (IOException e) {
