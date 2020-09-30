@@ -16,6 +16,7 @@ public class Application {
 
         SpeakerService service2 = appContext.getBean("speakerService", SpeakerService.class);
 
+
         System.out.println(service2);
     }
 }
